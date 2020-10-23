@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import TrendingAnimes from "../trendingAnimes";
+import TrendingMangas from "../trendingMangas";
 import "./homepage.scss";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 class Homepage extends Component {
@@ -29,7 +30,7 @@ class Homepage extends Component {
                 <TrendingAnimes></TrendingAnimes>
               </Route>
               <Route path="/TrendingMangas">
-                <TrendingAnimes></TrendingAnimes>
+                <TrendingMangas></TrendingMangas>
               </Route>
             </Switch>
           </div>

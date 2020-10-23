@@ -32,6 +32,13 @@ class trendingAnimes extends Component {
               <div className="row">
                 <h2>{anime.attributes.canonicalTitle}</h2>
                 <span>{anime.attributes.titles.ja_jp}</span>
+                <div className="tags">
+                  <span>{anime.attributes.averageRating}</span>
+                  <span>{anime.attributes.userCount}</span>
+                  <span>{anime.attributes.popularityRank}</span>
+                  <span>{anime.attributes.ratingRank}</span>
+                  <span>{anime.attributes.status}</span>
+                </div>
               </div>
             </div>
           ))}
