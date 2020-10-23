@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./trendingAnimes.scss";
+import ItemCard from '../ItemCard';
 class trendingAnimes extends Component {
   state = {
     AnimesTrending: [],
@@ -24,23 +25,11 @@ class trendingAnimes extends Component {
       return (
         <div>
           {this.state.AnimesTrending.data.map((anime, index) => (
-            <div key={anime.id} className="anime_card">
-              <img
-                src={anime.attributes.posterImage.tiny}
-                alt=""
-              />
-              <div className="row">
-                <h2>{anime.attributes.canonicalTitle}</h2>
-                <span>{anime.attributes.titles.ja_jp}</span>
-                <div className="tags">
-                  <span>{anime.attributes.averageRating}</span>
-                  <span>{anime.attributes.userCount}</span>
-                  <span>{anime.attributes.popularityRank}</span>
-                  <span>{anime.attributes.ratingRank}</span>
-                  <span>{anime.attributes.status}</span>
-                </div>
-              </div>
-            </div>
+            <div key={anime.id} >
+            <ItemCard
+              response = {anime}
+            ></ItemCard>
+          </div>
           ))}
         </div>
       );
