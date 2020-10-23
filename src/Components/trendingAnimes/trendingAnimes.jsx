@@ -14,6 +14,18 @@ class trendingAnimes extends Component {
 
   AtualizaLista(sort = 'ratingRank'){
     var base = 'https://kitsu.io/api/edge/anime';
+    if (document.getElementById('ordenacao') != null) {
+      var ordemAtual = document.getElementById('ordenacao').value;
+    }
+    if (sort === ordemAtual ) {
+      if (sort.includes("-")) {
+        sort = sort.substring(1);
+      }else{
+        sort = "-"+sort;
+        
+      }
+    }
+    document.getElementById("content").style.opacity = 0;
     axios
       .get(`${base}?sort=${sort}`, {
         headers: {},
@@ -21,6 +33,12 @@ class trendingAnimes extends Component {
       .then((response) => {
         const AnimesTrending = response.data;
         this.setState({ AnimesTrending });
+        document.getElementById("content").style.opacity = 1;
+        // 
+        document.getElementById("content").style.opacity = 1;
+        if (document.getElementById('ordenacao') != null) {
+          document.getElementById('ordenacao').value = sort;
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -31,11 +49,13 @@ class trendingAnimes extends Component {
     if (this.state.AnimesTrending.length !== 0) {
       return (
         <div>
-          <button onClick={() => this.AtualizaLista("ratingRank")}><FontAwesomeIcon icon={faStar} />{" "} Ranking geral</button>
-          <button onClick={() => this.AtualizaLista("-averageRating")}><FontAwesomeIcon icon={faStarHalfAlt} />{" "} Notas Gerais</button>
-          <button onClick={() => this.AtualizaLista("-userCount")}><FontAwesomeIcon icon={faUser} />{" "} Leitores</button>
-          <button onClick={() => this.AtualizaLista("popularityRank")}><FontAwesomeIcon icon={faFireAlt} />{" "} Popularidade</button>
-          <button onClick={() => this.AtualizaLista("-favoritesCount")}><FontAwesomeIcon icon={faStar} />{" "} Favoritos</button>
+          <div id="filtros">
+            <input type="hidden" name="ordenacao" id="ordenacao" value="ratingRank"/>
+            <button onClick={() => this.AtualizaLista("ratingRank")}><FontAwesomeIcon icon={faStar} />{" "} Ranking geral</button>
+            <button onClick={() => this.AtualizaLista("-averageRating")}><FontAwesomeIcon icon={faStarHalfAlt} />{" "} Notas Gerais</button>
+            <button onClick={() => this.AtualizaLista("popularityRank")}><FontAwesomeIcon icon={faFireAlt} />{" "} Popularidade</button>
+            <button onClick={() => this.AtualizaLista("-favoritesCount")}><FontAwesomeIcon icon={faStar} />{" "} Favoritos</button>
+          </div>
           {this.state.AnimesTrending.data.map((anime, index) => (
             <div key={anime.id} >
             <ItemCard

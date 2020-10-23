@@ -5,9 +5,11 @@ import "./ItemCard.scss";
 class ItemCard extends Component {
   state = {};
   array = this.props.response;
+
   render() {
     return (
       <div className="item_card">
+        {this.array.attributes.posterImage === null ? this.array.attributes.posterImage = '' : ""}
         <img src={this.array.attributes.posterImage.tiny} alt="" />
         <div className="row">
           <h2>{this.array.attributes.canonicalTitle}</h2>

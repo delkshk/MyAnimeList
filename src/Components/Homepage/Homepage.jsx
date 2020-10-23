@@ -21,7 +21,7 @@ class Homepage extends Component {
               </ul>
             </nav>
           </div>
-          <div className="content">
+          <div id="content" className="content">
             <Switch>
               <Route path="/TrendingAnimes">
                 <TrendingAnimes></TrendingAnimes>
