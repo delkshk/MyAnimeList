@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./trendingAnimes.scss";
 import ItemCard from '../ItemCard';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar, faUser, faFireAlt,faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 class trendingAnimes extends Component {
   state = {
     AnimesTrending: [],
@@ -10,7 +12,7 @@ class trendingAnimes extends Component {
     this.AtualizaLista();
   }
 
-  AtualizaLista(sort = 'popularityRank'){
+  AtualizaLista(sort = 'ratingRank'){
     var base = 'https://kitsu.io/api/edge/anime';
     axios
       .get(`${base}?sort=${sort}`, {
@@ -29,11 +31,11 @@ class trendingAnimes extends Component {
     if (this.state.AnimesTrending.length !== 0) {
       return (
         <div>
-          <button onClick={() => this.AtualizaLista("popularityRank")}>Popularidade</button>
-          <button onClick={() => this.AtualizaLista("ratingRank")}>Ranking</button>
-          <button onClick={() => this.AtualizaLista("-userCount")}>userCount</button>
-          <button onClick={() => this.AtualizaLista("-averageRating")}>averageRating</button>
-          <button onClick={() => this.AtualizaLista("-favoritesCount")}>favoritesCount</button>
+          <button onClick={() => this.AtualizaLista("ratingRank")}><FontAwesomeIcon icon={faStar} />{" "} Ranking geral</button>
+          <button onClick={() => this.AtualizaLista("-averageRating")}><FontAwesomeIcon icon={faStarHalfAlt} />{" "} Notas Gerais</button>
+          <button onClick={() => this.AtualizaLista("-userCount")}><FontAwesomeIcon icon={faUser} />{" "} Leitores</button>
+          <button onClick={() => this.AtualizaLista("popularityRank")}><FontAwesomeIcon icon={faFireAlt} />{" "} Popularidade</button>
+          <button onClick={() => this.AtualizaLista("-favoritesCount")}><FontAwesomeIcon icon={faStar} />{" "} Favoritos</button>
           {this.state.AnimesTrending.data.map((anime, index) => (
             <div key={anime.id} >
             <ItemCard

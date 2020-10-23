@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faUser, faFireAlt } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faUser, faFireAlt,faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 import "./ItemCard.scss";
 class ItemCard extends Component {
   state = {};
@@ -13,23 +13,27 @@ class ItemCard extends Component {
           <h2>{this.array.attributes.canonicalTitle}</h2>
           <span>{this.array.attributes.titles.ja_jp}</span>
           <div className="tags">
-            <span className="avaliacoes">
-              <FontAwesomeIcon icon={faStar} />{" "}
-              {Math.round(this.array.attributes.averageRating / 10)}
-            </span>
-            <span>
-              <FontAwesomeIcon icon={faUser} />{" "}
-              {this.array.attributes.userCount}
-            </span>
-            <span>
-              <FontAwesomeIcon icon={faFireAlt} />{" "}
-              {this.array.attributes.popularityRank}
-            </span>
-            <span>
+            <span className="ratingRank">
               <FontAwesomeIcon icon={faStar} />{" "}
               {this.array.attributes.ratingRank}
             </span>
-            <span>{this.array.attributes.status}</span>
+            <span className="avaliacoes averageRating">
+              <FontAwesomeIcon icon={faStarHalfAlt} />{" "}
+              {Math.round(this.array.attributes.averageRating / 10)}
+            </span>
+            <span className="userCount">
+              <FontAwesomeIcon icon={faUser} />{" "}
+              {this.array.attributes.userCount}
+            </span>
+            <span className="popularityRank">
+              <FontAwesomeIcon icon={faFireAlt} />{" "}
+              {this.array.attributes.popularityRank}
+            </span>
+            <span className="favoritesCount">
+              <FontAwesomeIcon icon={faStar} />{" "}
+              {this.array.attributes.favoritesCount}
+            </span>
+            <span className="status">{this.array.attributes.status}</span>
           </div>
         </div>
       </div>

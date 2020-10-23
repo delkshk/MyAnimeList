@@ -1,4 +1,7 @@
-button {
+
+$cor: #78ce78;
+
+button,.button {
     background: 0;
     border: 1px solid #8e8e8e;
     margin: 10px;
@@ -8,8 +11,17 @@ button {
     color: #8e8e8e;
     transition: 0.2s ease-in-out;
     &:hover {
-        background: orange;
+        background: $cor;
         color: white;
-        border-color: orange;
+        border-color: $cor;
     }
+}
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    a{
+        text-decoration: none;
+    }
+
 }

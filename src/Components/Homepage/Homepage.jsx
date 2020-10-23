@@ -13,13 +13,10 @@ class Homepage extends Component {
             <nav>
               <ul>
                 <li>
-                  <Link to="/">Home</Link>
+                  <Link className="button" to="/TrendingAnimes">Animes</Link>
                 </li>
                 <li>
-                  <Link to="/TrendingAnimes">TrendingAnimes</Link>
-                </li>
-                <li>
-                  <Link to="/TrendingMangas">TrendingMangas</Link>
+                  <Link className="button" to="/TrendingMangas">Mangas</Link>
                 </li>
               </ul>
             </nav>
