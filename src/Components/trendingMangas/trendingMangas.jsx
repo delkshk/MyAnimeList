@@ -6,9 +6,15 @@ class trendingMangas extends Component {
   state = {
     MangasTrending: [],
   };
+
   async componentDidMount() {
-    await axios
-      .get(`https://kitsu.io/api/edge/trending/Mangas`, {
+    this.AtualizaLista();
+  }
+
+  AtualizaLista(sort = 'popularityRank'){
+    var base = 'https://kitsu.io/api/edge/manga';
+    axios
+      .get(`${base}?sort=${sort}`, {
         headers: {},
       })
       .then((response) => {
@@ -20,10 +26,16 @@ class trendingMangas extends Component {
       });
   }
 
+
   render() {
     if (this.state.MangasTrending.length !== 0) {
       return (
         <div>
+          <button onClick={() => this.AtualizaLista("popularityRank")}>Popularidade</button>
+          <button onClick={() => this.AtualizaLista("ratingRank")}>Ranking</button>
+          <button onClick={() => this.AtualizaLista("-userCount")}>userCount</button>
+          <button onClick={() => this.AtualizaLista("-averageRating")}>averageRating</button>
+          <button onClick={() => this.AtualizaLista("-favoritesCount")}>favoritesCount</button>
           {this.state.MangasTrending.data.map((Mangas, index) => (
             <div key={Mangas.id} >
               <ItemCard
