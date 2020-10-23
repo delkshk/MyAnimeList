@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import TrendingAnimes from "../trendingAnimes";
-import TrendingMangas from "../trendingMangas";
+import Animes from "../Animes";
+import Mangas from "../Mangas";
 import "./homepage.scss";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 class Homepage extends Component {
@@ -13,21 +13,21 @@ class Homepage extends Component {
             <nav>
               <ul>
                 <li>
-                  <Link className="button" to="/TrendingAnimes">Animes</Link>
+                  <Link className="button" to="/Animes">Animes</Link>
                 </li>
                 <li>
-                  <Link className="button" to="/TrendingMangas">Mangas</Link>
+                  <Link className="button" to="/Mangas">Mangas</Link>
                 </li>
               </ul>
             </nav>
           </div>
           <div id="content" className="content">
             <Switch>
-              <Route path="/TrendingAnimes">
-                <TrendingAnimes></TrendingAnimes>
+              <Route path="/Animes">
+                <Animes></Animes>
               </Route>
-              <Route path="/TrendingMangas">
-                <TrendingMangas></TrendingMangas>
+              <Route path="/Mangas">
+                <Mangas></Mangas>
               </Route>
             </Switch>
           </div>

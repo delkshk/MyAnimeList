@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
 import ItemCard from '../ItemCard';
-import "./trendingMangas.scss";
+import "./Mangas.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faFireAlt,faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
-class trendingMangas extends Component {
+class Mangas extends Component {
   state = {
     MangasTrending: [],
   };
@@ -73,4 +73,4 @@ class trendingMangas extends Component {
   }
 }
 
-export default trendingMangas;
+export default Mangas;
