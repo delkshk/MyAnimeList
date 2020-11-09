@@ -1,6 +1,6 @@
 {
   "name": "myanimelist",
-  "homepage": "https://delkshk.github.io/MyAnimeList",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
